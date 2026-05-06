@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Career Predictor</h1>
+            <p>Enter your academic and skill metrics to predict your optimal job role and estimated salary.</p>
+        </div>
+        
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="cgpa">CGPA (out of 10)</label>
+                <input type="number" step="0.01" id="cgpa" name="cgpa" placeholder="e.g. 8.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch" required>
+                    <option value="Civil">Civil Engineering</option>
+                    <option value="IT">Information Technology</option>
+                    <option value="Mechanical">Mechanical Engineering</option>
+                    <option value="CSE">Computer Science</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="college_tier">College Tier</label>
+                <select id="college_tier" name="college_tier" required>
+                    <option value="1">Tier 1</option>
+                    <option value="2">Tier 2</option>
+                    <option value="3">Tier 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="python_skill">Python Skill</label>
+                <select id="python_skill" name="python_skill" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dsa_skill">DSA Skill</label>
+                <select id="dsa_skill" name="dsa_skill" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ml_skill">Machine Learning</label>
+                <select id="ml_skill" name="ml_skill" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="web_dev_skill">Web Development</label>
+                <select id="web_dev_skill" name="web_dev_skill" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="coding_score">Coding Score (0-100)</label>
+                <input type="number" step="0.1" id="coding_score" name="coding_score" placeholder="e.g. 85" required>
+            </div>
+
+            <div class="form-group">
+                <label for="communication_score">Comm. Score (0-10)</label>
+                <input type="number" step="0.1" id="communication_score" name="communication_score" placeholder="e.g. 8.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="aptitude_score">Aptitude Score (0-100)</label>
+                <input type="number" step="0.1" id="aptitude_score" name="aptitude_score" placeholder="e.g. 90" required>
+            </div>
+
+            <div class="form-group">
+                <label for="internships">Internships Completed</label>
+                <input type="number" id="internships" name="internships" placeholder="e.g. 2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="projects">Projects Built</label>
+                <input type="number" id="projects" name="projects" placeholder="e.g. 4" required>
+            </div>
+
+            <div class="form-group">
+                <label for="backlogs">Active Backlogs</label>
+                <input type="number" id="backlogs" name="backlogs" placeholder="e.g. 0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resume_score">Resume Score (0-100)</label>
+                <input type="number" step="0.1" id="resume_score" name="resume_score" placeholder="e.g. 75" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skill_score">Skill Score (1-10)</label>
+                <input type="number" id="skill_score" name="skill_score" placeholder="e.g. 8" required>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit">Predict Career</button>
+            </div>
+            
+            {% if prediction %}
+            <div class="result">
+                <h2>Prediction Result</h2>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
